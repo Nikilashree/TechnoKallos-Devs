@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menus 04</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <div class="box">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+
+    <!-- SVG Filters -->
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+            <filter id="filter-name">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="15" result="my-blur" />
+                <feColorMatrix in="my-blur" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 20 -8"
+                    result="my-gooey" />
+            </filter>
+        </defs>
+    </svg>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <nav>
+        <img src="images/devs.png" alt="Devs Logo" class="nav-logo">
+        <ul>
+            <li><a href="#" class="link">HOME</a></li>
+            <li><a href="#" class="link">BLOG</a></li>
+            <li><a href="#" class="link">P2P HUB</a></li>
+            <li><a href="#" class="link">PODCASTS</a></li>
+            <li><a href="#" class="link">CONTESTS</a></li>
+            <li><a href="#" class="link">EVENTS</a></li>
+            <li><a href="#" class="link">GALLERY</a></li>
+            <li><a href="#" class="link">TEAM</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+          <img src="./imgs/3.jpg">
+        </div>
+        <div class="card">
+          <img src="./imgs/2.jpg">
+        </div>
+        <div class="card">
+          <img src="./imgs/1.jpg">
+        </div>
+        <div class="card">
+          <img src="./imgs/4.jpg">
+        </div>
+        <div class="card">
+          <img src="./imgs/5.jpg">
+        </div>
+      </div>
+
+
+    <br><br>
+
+    <footer class="footer">
+        <section aria-label="section" class="no-top no-bottom scroller">
+            <div class="wow fadeInRight d-flex">
+                <div class="de-marquee-list wow">
+                    <div class="d-item">
+                        <span class="d-item-txt">EAT.CODE.COFEE.</span>
+                        <span class="d-item-txt">EAT.CODE.COFEE.</span>
+                        <span class="d-item-txt">EAT.CODE.COFEE.</span>
+                        <span class="d-item-txt">EAT.CODE.COFEE.</span>
+                        <span class="d-item-txt">EAT.CODE.COFEE.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+
+    <!-- cursor -->
+
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+
+
+    <!-- Javascript Files -->
+    <script src="js/plugins.js"></script>
+    <script src="js/designesia.js"></script>
+    <script src="js/custom-marquee.js"></script>
+    <script src="js/jquery.countdown.js"></script>
+    <script src="js/countdown-custom.js"></script>
+    <script>
+        
+const coords = { x: 0, y: 0 };
+const circles = document.querySelectorAll(".circle");
+
+const colors = [
+    "#ffffff",
+    "#f2f2f2",
+    "#e6e6e6",
+    "#d9d9d9",
+    "#cccccc",
+    "#bfbfbf",
+    "#b3b3b3",
+    "#a6a6a6",
+    "#999999",
+    "#8c8c8c",
+    "#808080",
+    "#737373",
+    "#666666",
+    "#595959",
+    "#4d4d4d",
+    "#404040",
+    "#333333",
+    "#262626",
+    "#1a1a1a",
+    "#0d0d0d",
+    "#000000"
+];
+
+
+circles.forEach(function (circle, index) {
+    circle.x = 0;
+    circle.y = 0;
+    circle.style.backgroundColor = colors[index % colors.length];
+});
+
+window.addEventListener("mousemove", function (e) {
+    coords.x = e.clientX;
+    coords.y = e.clientY;
+
+});
+
+function animateCircles() {
+
+    let x = coords.x;
+    let y = coords.y;
+
+    circles.forEach(function (circle, index) {
+        circle.style.left = x - 12 + "px";
+        circle.style.top = y - 12 + "px";
+
+        circle.style.scale = (circles.length - index) / circles.length;
+
+        circle.x = x;
+        circle.y = y;
+
+        const nextCircle = circles[index + 1] || circles[0];
+        x += (nextCircle.x - x) * 0.3;
+        y += (nextCircle.y - y) * 0.3;
+    });
+
+    requestAnimationFrame(animateCircles);
+}
+
+animateCircles();
+
+    </script>
+
+</body>
+
+</html>
